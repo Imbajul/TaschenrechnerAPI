@@ -42,4 +42,4 @@ async def calculate(request_data: models.CalculationRequest):
     
 
 if __name__ == "__main__":
-    uvicorn.run("__main__:app", port=int(API_PORT), reload=False)
+    uvicorn.run("__main__:app", host="0.0.0.0", port=int(API_PORT), reload=False)
