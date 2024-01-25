@@ -4,8 +4,20 @@ from fastapi import FastAPI, HTTPException
 import uvicorn
 import models
 from helpers import perform_calculation
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# CORS (Cross-Origin Resource Sharing) Konfiguration
+origins = ["*"]  # Hier können Sie spezifische Ursprünge anstelle von '*' angeben
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Erlaubt alle HTTP-Methoden (GET, POST, usw.)
+    allow_headers=["*"],  # Erlaubt alle HTTP-Header
+)
 
 API_PORT = os.getenv("API_PORT", 8000)
 
